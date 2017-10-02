@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * {
+        font-family: Verdana,'Helvetica Neue',Helvetica,Arial,sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Photon beacon test page</h1>
+    <a href="https://google.com">GOTO google</a>
+    <!--<a href="test2.html">GOTO 2</a>-->
+    <script>
+      performance.mark('test1');
+      window.setTimeout(function(){
+        performance.mark('test2');
+        performance.measure('measure1', 'test1', 'test2');
+      }, 500)
+    </script>
+    <script src="../node_modules/usertiming-compression/src/usertiming-compression.js"></script>
+    <script>
+      window.PHOTON_CONFIG = {
+        URL: '/beacon'
+      }
+      // gather and send on unload, as user leaves page
+      window.addEventListener('unload', () => {
+        PHOTON.getData(); // gather late, to gather without impacting user
+        PHOTON.addData('foo', {'bar': false});
+        PHOTON.send(); // sends beacon, if supported
+      });
+    </script>
+    <script src="../node_modules/photon-beacon/dist/photon-beacon.min.js" async></script>
+  </body>
+</html>

@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.send(204);
 });
 
-/* POST hayaku-beacon */
+/* POST photon-beacon */
 router.post('/beacon', function(req, res, next) {
   res.send(204);
 
