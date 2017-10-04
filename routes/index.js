@@ -1,5 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const beaconLogger = require('../lib/beacon-logger');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -7,13 +9,6 @@ router.get('/', function(req, res, next) {
 });
 
 /* POST photon-beacon */
-router.post('/beacon', function(req, res, next) {
-  res.send(204);
-
-  // Parse beacon data
-
-  // Write log
-
-});
+router.post('/beacon', beaconLogger);
 
 module.exports = router;
