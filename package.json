@@ -1,6 +1,6 @@
 {
   "name": "photon-server",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "descriptions": "Express.js-based server to catch photon-beacon requests and log them",
   "scripts": {
