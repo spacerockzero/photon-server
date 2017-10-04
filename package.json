@@ -1,12 +1,13 @@
 {
   "name": "photon-server",
   "version": "1.0.0",
-  "private": true,
   "descriptions": "Express.js-based server to catch photon-beacon requests and log them",
   "scripts": {
     "start": "node ./bin/www",
     "dev": "./node_modules/.bin/nodemon ./bin/www"
   },
+  "author": "Jakob Anderson <@spacerockzero>",
+  "license": "MIT",
   "dependencies": {
     "body-parser": "~1.18.2",
     "compression": "^1.7.1",
