@@ -19,12 +19,14 @@
       window.setTimeout(function(){
         performance.mark('test2');
         performance.measure('measure1', 'test1', 'test2');
-        PHOTON.getData(); // re-gather data after it's been changed
+        // PHOTON.getData(); // re-gather data after it's been changed
       }, 500)
     </script>
     <!-- <script src="usertiming-compression.js"></script>
-    <script src="resourcetiming-compression.js"></script>
-    <script src="lz-string.min.js"></script> -->
+    <script src="resourcetiming-compression.js"></script> -->
+    <!-- LZString not working on server end yet -->
+    <!-- <script src="lz-string.min.js"></script> -->
+    <!-- zipping only needed if you have tons of data in beacon -->
     <script src="/photon-beacon/photon-beacon.min.js" async></script>
     <script>
       window.PHOTON_CONFIG = {
@@ -33,7 +35,6 @@
       // gather and send on unload, as user leaves page
       window.addEventListener('load', () => {
         console.log('load fired!');
-        // PHOTON.getData(); // gather late, to gather without impacting user
         PHOTON.addData('foo', {'bar': false});
       });
       // gather and send on unload, as user leaves page
