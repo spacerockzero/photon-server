@@ -4,9 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var compression = require('compression');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 
@@ -17,13 +17,29 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+
+// accept plaintext requests until chrome stops CORS-breaking json blobs for sendBeacon
+app.use(function(req, res, next){
+  if (req.is('text/*')) {
+    req.text = '';
+    req.setEncoding('utf8');
+    req.on('data', function(chunk){ req.text += chunk });
+    req.on('end', next);
+  } else {
+    next();
+  }
+});
+app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// testing only
+app.use('/photon-beacon', express.static(__dirname + '/node_modules/photon-beacon/dist/'));
+//
+
 app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

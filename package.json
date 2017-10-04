@@ -1,17 +1,30 @@
 {
-  "name": "hayaku-server",
+  "name": "photon-server",
   "version": "0.0.0",
   "private": true,
+  "descriptions": "Express.js-based server to catch photon-beacon requests and log them",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "dev": "./node_modules/.bin/nodemon ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
+    "compression": "^1.7.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "jade": "~1.11.0",
+    "lz-string": "^1.4.4",
     "morgan": "~1.9.0",
-    "serve-favicon": "~2.4.5"
+    "resourcetiming-compression": "^1.0.0",
+    "serve-favicon": "~2.4.5",
+    "usertiming-compression": "^0.1.5"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^3.0.0",
+    "nodemon": "^1.12.1",
+    "photon-beacon": "git+https://github.com/spacerockzero/photon-beacon.git",
+    "standard": "^10.0.3"
   }
 }
