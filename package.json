@@ -1,6 +1,6 @@
 {
   "name": "photon-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "descriptions": "Express.js-based server to catch photon-beacon requests and log them",
   "scripts": {
     "start": "node ./bin/www",
